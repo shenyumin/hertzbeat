@@ -26,7 +26,7 @@ services:
     hostname: mysql
     restart: always
     ports:
-      - "3306"
+      - "49830:3306"
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: 123456
@@ -44,28 +44,28 @@ services:
     environment:
       TZ: Asia/Shanghai
     ports:
-      - "8181"
-      - "6667"
+      - "49829:8181"
+      - "49828:6667"
     volumes:
       - ./dbdata/iotdbdata:/iotdb/data
     networks:
       - heartzbeat
 
-  hertzbeat:
-    image: tancloud/hertzbeat
-    container_name: compose-hertzbeat
-    hostname: hertzbeat
-    restart: always
-    environment:
-      TZ: Asia/Shanghai
-      LANG: zh_CN.UTF-8
-    depends_on:
-      - mysql
-      - iotdb
-    volumes:
-      - ./conf/application.yml:/opt/hertzbeat/config/application.yml
-      - ./conf/sureness.yml:/opt/hertzbeat/config/sureness.yml
-    ports:
-      - "1157:1157"
-    networks:
-      - heartzbeat
+  #hertzbeat:
+  #  image: tancloud/hertzbeat
+  #  container_name: compose-hertzbeat
+  #  hostname: hertzbeat
+   # restart: always
+   # environment:
+   #   TZ: Asia/Shanghai
+   #   LANG: zh_CN.UTF-8
+   # depends_on:
+   #   - mysql
+   #   - iotdb
+   # volumes:
+   #   - ./conf/application.yml:/opt/hertzbeat/config/application.yml
+   #   - ./conf/sureness.yml:/opt/hertzbeat/config/sureness.yml
+   # ports:
+   #   - "1157:1157"
+   # networks:
+   #   - heartzbeat

@@ -66,7 +66,7 @@
 
     <!-- 生产环境配置 -->
     <springProfile name="prod">
-        <root level="INFO">
+        <root level="DEBUG">
             <appender-ref ref="ConsoleAppender"/>
             <appender-ref ref="SystemOutFileAppender"/>
             <appender-ref ref="ErrOutFileAppender"/>
